@@ -4,7 +4,7 @@ import {
   FaLink,
   FaChartPie,
   FaRegCopy,
-  FaCheck,
+  FaCheck
 } from "react-icons/fa";
 import { useSelector } from "react-redux";
 const baseUrl = `${window.location.protocol}//${window.location.host}/`;
@@ -13,7 +13,10 @@ const Referrals = () => {
   const { user } = useSelector((state) => state?.user);
 
   const handleCopy = () => {
+    console.log(user);
     const referralLink = `${baseUrl}sign-up?ref=${user?.referCode}`;
+
+    console.log(referralLink);
     navigator.clipboard.writeText(referralLink).then(() => {
       setIsCopied(true);
       setTimeout(() => setIsCopied(false), 2000); // Reset after 2 seconds

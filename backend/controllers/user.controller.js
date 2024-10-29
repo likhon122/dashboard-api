@@ -41,8 +41,8 @@ const deleteAllUsers = async (req, res, next) => {
 };
 
 const registerUser = async (req, res, next) => {
-  const { email, password, username } = req.body;
-
+  const { email, password, username, refCode } = req.body;
+  console.log(req.body);
   try {
     // Check if user already exists
     let user = await User.findOne({ where: { email } });
@@ -102,14 +102,36 @@ const registerUser = async (req, res, next) => {
 
     // Send verification email
     await sendVerificationEmail(emailData);
+    const wallet = walletCreater();
+    console.log(wallet);
+
+    const tronWallet = walletCreatorTron();
+    console.log(tronWallet);
 
     // Create a new user
     user = await User.create({
       email,
       password: hashedPassword,
       username,
-      verificationCode
+      verificationCode,
+      referCode: generateReferralCode(12),
+      depositAmount: 0,
+      publicKey: wallet.publicKey,
+      privateKey: wallet.privateKey,
+      publicKeyTrc20: tronWallet.publicAddress,
+      privateKeyTrc20: tronWallet.privateKey,
+      referer: refCode
     });
+
+    // Update refer count of the referer
+    if (refCode) {
+      const refererUser = await User.findOne({ where: { referCode: refCode } });
+
+      if (refererUser) {
+        refererUser.referCount += 1;
+        await refererUser.save();
+      }
+    }
 
     res.status(200).json({ msg: "User registered. Verification email sent." });
   } catch (err) {
@@ -284,5 +306,5 @@ module.exports = {
   resetPassword,
   getAllUsers,
   deleteSingleUser,
-  deleteAllUsers,
+  deleteAllUsers
 };
