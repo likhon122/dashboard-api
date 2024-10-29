@@ -5,6 +5,7 @@ const {
   changeAdmin,
   getWithdrawals
 } = require("../controllers/admin.controller");
+const { deleteWithdrawal } = require("../controllers/withdraw.controller");
 
 const adminRouter = express.Router();
 
@@ -15,6 +16,13 @@ adminRouter.post(
   userIsLoggedIn,
   // checkAdmin,
   changeAdmin
+);
+
+adminRouter.delete(
+  "/delete-withdrawal",
+  userIsLoggedIn,
+  checkAdmin,
+  deleteWithdrawal
 );
 
 module.exports = adminRouter;

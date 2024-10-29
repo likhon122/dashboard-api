@@ -1,5 +1,6 @@
-export const backendDomain = "https://dashboard-api-grhc.onrender.com";
-// export const backendDomain = "http://localhost:5000";
+// export const backendDomain = "https://dashboard-api-grhc.onrender.com";
+export const backendDomain = "http://localhost:5000";
+
 const ServerApi = {
   signUp: {
     url: `${backendDomain}/user/register`,
@@ -51,6 +52,14 @@ const ServerApi = {
   },
   priceCRETA: {
     url: `${backendDomain}/price/CRETA`,
+    method: "get"
+  },
+  deleteWithdrawal: {
+    url: `${backendDomain}/admin/delete-withdrawal`,
+    method: "delete"
+  },
+  allUsers: {
+    url: `${backendDomain}/user/all-users`,
     method: "get"
   }
 };

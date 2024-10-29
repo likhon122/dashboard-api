@@ -41,8 +41,6 @@ const WithdrawalForm = () => {
       email: user?.email
     };
 
-    console.log(formData);
-
     try {
       setLoading(true);
       await axios.post(ServerApi.makeWithdrawal.url, formData, {
@@ -114,7 +112,6 @@ const WithdrawalForm = () => {
           >
             <option value="">-- Select Network --</option>
             <option value="BEP20">BEP20</option>
-            <option value="TRC20">TRC20</option>
           </select>
         </div>
 

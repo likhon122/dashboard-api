@@ -13,7 +13,7 @@ const DepositForm = () => {
   // Dummy deposit addresses for each network
   const depositAddresses = {
     BEP20: user?.publicKey,
-    TRC20: user?.publicKeyTrc20,
+    TRC20: user?.publicKeyTrc20
   };
 
   // Handle network change
@@ -51,7 +51,6 @@ const DepositForm = () => {
           >
             <option value="">-- Select Network --</option>
             <option value="BEP20">BEP20</option>
-            <option value="TRC20">TRC20</option>
           </select>
         </div>
 

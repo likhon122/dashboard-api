@@ -7,14 +7,12 @@ import { RiLuggageDepositFill } from "react-icons/ri";
 import { mainLogo } from "../../../assets";
 import WithdrawDetails from "./WithdrawDetails";
 import AddAdmin from "./AddAdmin";
+import AllUsers from "./AllUsers";
 
 const Admin = () => {
-
-  const [selectedComponent, setSelectedComponent] =
-    useState("Withdraw-Details");
+  const [selectedComponent, setSelectedComponent] = useState("All-Users");
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef(null); // Ref for the dropdown element
-
 
   const handleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
@@ -55,6 +53,14 @@ const Admin = () => {
           <nav className="hidden md:block">
             <ul className="space-y-5">
               <li
+                onClick={() => handleLinkClick("All-Users")}
+                className={`${
+                  selectedComponent === "All-Users" && "bg-[#3D3D3D] text-white"
+                } text-white cursor-pointer font-semibold duration-300 hover:bg-[#3D3D3D] p-2 rounded-lg`}
+              >
+                <FaHome className="inline-block mr-2" /> All Users
+              </li>
+              <li
                 onClick={() => handleLinkClick("Withdraw-Details")}
                 className={`${
                   selectedComponent === "Withdraw-Details" &&
@@ -90,6 +96,12 @@ const Admin = () => {
                 >
                   <li
                     className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                    onClick={() => handleLinkClick("All-Users")}
+                  >
+                    <FaHome className="inline-block mr-2" /> All-Users
+                  </li>
+                  <li
+                    className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
                     onClick={() => handleLinkClick("Withdraw-Details")}
                   >
                     <FaHome className="inline-block mr-2" /> Withdraw Details
@@ -112,6 +124,7 @@ const Admin = () => {
           {/* Dynamic Component Rendering */}
           {selectedComponent === "Withdraw-Details" && <WithdrawDetails />}
           {selectedComponent === "Add-Admin" && <AddAdmin />}
+          {selectedComponent === "All-Users" && <AllUsers />}
         </div>
       </div>
     </div>

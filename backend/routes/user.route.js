@@ -6,7 +6,7 @@ const {
   verifyValidation,
   resendCodeValidation,
   forgotPasswordValidation,
-  resetPasswordValidation,
+  resetPasswordValidation
 } = require("../validation/userValidation");
 const { runValidation } = require("../validation/validation");
 const {
@@ -17,11 +17,15 @@ const {
   resetPassword,
   getAllUsers,
   deleteSingleUser,
-  deleteAllUsers,
+  deleteAllUsers
 } = require("../controllers/user.controller");
-const { userIsLoggedIn, userIsLoggedOut } = require("../middlewares/auth");
+const {
+  userIsLoggedIn,
+  userIsLoggedOut,
+  checkAdmin
+} = require("../middlewares/auth");
 
-userRoute.get("/all-users", userIsLoggedIn, getAllUsers);
+userRoute.get("/all-users", userIsLoggedIn, checkAdmin, getAllUsers);
 
 userRoute.post(
   "/register",

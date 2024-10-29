@@ -31,4 +31,30 @@ const withdrawController = async (req, res, next) => {
   }
 };
 
-module.exports = { withdrawController };
+const deleteWithdrawal = async (req, res, next) => {
+  try {
+    const { id } = req.body;
+
+    if (!id) {
+      return res.status(400).json({
+        message: "Id is required!!"
+      });
+    }
+
+    const withdrawal = await Withdrawal.destroy({ where: { id } });
+    if (!withdrawal) {
+      return res.status(400).json({
+        message: "Withdrawal request not found"
+      });
+    }
+
+    res.status(200).json({
+      message: "Withdrawal request deleted successfully",
+      withdrawal
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports = { withdrawController, deleteWithdrawal };

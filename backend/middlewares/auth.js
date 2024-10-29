@@ -1,6 +1,6 @@
 const { verifyJsonWebToken } = require("../helper/jsonWebToken");
 const { refreshTokenKey } = require("../secret");
-const User = require("../models/User")
+const User = require("../models/User");
 
 const userIsLoggedIn = async (req, res, next) => {
   try {
@@ -69,7 +69,7 @@ const checkAdmin = async (req, res, next) => {
 
     const user = await User.findOne({ where: { email: userInfo.email } });
 
-    console.log(user)
+    console.log(user);
 
     if (!user.isAdmin) {
       console.log("first");
