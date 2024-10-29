@@ -1,5 +1,5 @@
-// export const backendDomain = "https://profit-link.onrender.com";
-export const backendDomain = "http://localhost:5000";
+export const backendDomain = "https://dashboard-api-grhc.onrender.com";
+// export const backendDomain = "http://localhost:5000";
 const ServerApi = {
   signUp: {
     url: `${backendDomain}/user/register`,
