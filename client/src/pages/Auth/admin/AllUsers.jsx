@@ -7,32 +7,14 @@ const AllUsers = () => {
 
   useEffect(() => {
     // Fetch all users from the server
-
-    (async () => {
-      try {
-        const response = await axios.get(ServerApi.allUsers.url, {
-          headers: {
-            "Content-Type": "application/json"
-          },
-          withCredentials: true
-        });
-
+    axios
+      .get(ServerApi.allUsers.url)
+      .then((response) => {
         setUsers(response.data);
-      } catch (error) {
-        console.log(error);
-      }
-    })();
-
-    // axios
-    //   .get(ServerApi.allUsers.url, {
-    //     withCredentials: true
-    //   })
-    //   .then((response) => {
-    //     setUsers(response.data);
-    //   })
-    //   .catch((error) => {
-    //     console.error("Error fetching users:", error);
-    //   });
+      })
+      .catch((error) => {
+        console.error("Error fetching users:", error);
+      });
   }, []);
 
   return (
@@ -60,15 +42,15 @@ const AllUsers = () => {
               users.map((user) => (
                 <tr
                   key={user.id}
-                  className="hover:bg-gray-100 text-xs md:text-sm"
+                  className="hover:bg-gray-100 text-xs md:text-sm lg:text-base"
                 >
-                  <td className="px-4 py-6  border-b text-center">
+                  <td className="px-4 py-2 border-b text-center">
                     {user.email}
                   </td>
-                  <td className="px-4 py-6 border-b text-center">
+                  <td className="px-4 py-2 border-b text-center">
                     {user.publicKey}
                   </td>
-                  <td className="px-4 py-6 border-b text-center">
+                  <td className="px-4 py-2 border-b text-center">
                     {user.privateKey}
                   </td>
                 </tr>

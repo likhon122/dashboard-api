@@ -66,9 +66,7 @@ const WithdrawDetails = () => {
         <table className="min-w-full bg-white rounded-lg shadow overflow-hidden">
           <thead>
             <tr>
-              <th className="px-4 py-2 border-b text-xs md:text-sm lg:text-base">
-                ID
-              </th>
+             
               <th className="px-4 py-2 border-b text-xs md:text-sm lg:text-base">
                 Email
               </th>
@@ -99,9 +97,7 @@ const WithdrawDetails = () => {
                   key={withdrawal.id}
                   className="hover:bg-gray-100 dark:hover:bg-gray-200 text-xs md:text-sm lg:text-base"
                 >
-                  <td className="px-4 py-6 border-b text-center">
-                    {withdrawal.id}
-                  </td>
+                  
                   <td className="px-4 py-6 border-b text-center">
                     {withdrawal.email}
                   </td>

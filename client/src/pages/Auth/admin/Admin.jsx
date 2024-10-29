@@ -1,8 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 import { FaRegCircleUser } from "react-icons/fa6";
 
-import { FaHome } from "react-icons/fa";
+
 import { RiLuggageDepositFill } from "react-icons/ri";
+import { FaUsers } from "react-icons/fa";
+import { PiHandWithdrawFill } from "react-icons/pi";
 
 import { mainLogo } from "../../../assets";
 import WithdrawDetails from "./WithdrawDetails";
@@ -58,7 +60,7 @@ const Admin = () => {
                   selectedComponent === "All-Users" && "bg-[#3D3D3D] text-white"
                 } text-white cursor-pointer font-semibold duration-300 hover:bg-[#3D3D3D] p-2 rounded-lg`}
               >
-                <FaHome className="inline-block mr-2" /> All Users
+                <FaUsers className="inline-block mr-2" /> All Users
               </li>
               <li
                 onClick={() => handleLinkClick("Withdraw-Details")}
@@ -67,7 +69,8 @@ const Admin = () => {
                   "bg-[#3D3D3D] text-white"
                 } text-white cursor-pointer font-semibold duration-300 hover:bg-[#3D3D3D] p-2 rounded-lg`}
               >
-                <FaHome className="inline-block mr-2" /> Withdraw Details
+                <PiHandWithdrawFill className="inline-block mr-2" /> Withdraw
+                Details
               </li>
               <li
                 onClick={() => handleLinkClick("Add-Admin")}
@@ -98,13 +101,14 @@ const Admin = () => {
                     className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
                     onClick={() => handleLinkClick("All-Users")}
                   >
-                    <FaHome className="inline-block mr-2" /> All-Users
+                    <FaUsers className="inline-block mr-2" /> All-Users
                   </li>
                   <li
                     className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
                     onClick={() => handleLinkClick("Withdraw-Details")}
                   >
-                    <FaHome className="inline-block mr-2" /> Withdraw Details
+                    <PiHandWithdrawFill className="inline-block mr-2" />{" "}
+                    Withdraw Details
                   </li>
                   <li
                     className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
